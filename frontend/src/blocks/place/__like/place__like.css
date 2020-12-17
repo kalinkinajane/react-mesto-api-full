@@ -1,0 +1,29 @@
+.place__like {
+    border: none;
+    background: url(../../../images/place-like.png) center no-repeat;
+    padding: 0;
+    background-size: 100%;
+    width: 21px;
+    height: 19px;
+   
+}
+.place__like:hover, .place__like:active, .place__like:focus {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.4s;
+    outline: none;
+}
+.like {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.place__like-count{
+    color: black;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+   
+}
+

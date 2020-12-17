@@ -1,0 +1,19 @@
+@import url(./__container/popup-view__conteiner.css);
+@import url(./__close/popup-view__close.css);
+@import url(./__image/popup-view__image.css);
+@import url(./__caption/popup-view__caption.css);
+.popup_type_view{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.4s linear;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .9);
+    justify-content: center;
+    align-items: center;
+}
+
+

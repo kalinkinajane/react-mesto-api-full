@@ -1,0 +1,11 @@
+.place__image {
+    object-position: center;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: 282px;
+}
+.place__image:hover {
+    cursor: pointer;
+    transition: 0.4s;
+}

@@ -1,0 +1,21 @@
+@import url(./__remove/place__remove.css);
+@import url(./__image/place__image.css);
+@import url(./__text/place__text.css);
+@import url(./__title/place__title.css);
+@import url(./__like/place__like.css);
+@import url(./__like/_active/place__like_active.css);
+
+.place {
+    background-color: #FFFFFF;
+    width: 100%;
+    border-radius: 10px;
+    padding-bottom: 24px;
+    position: relative;
+}
+
+@media screen and (max-width: 499px) {
+    .place {
+        margin-bottom: 20px;
+    }
+}
+

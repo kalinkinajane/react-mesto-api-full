@@ -1,0 +1,15 @@
+.place__like_active {
+    border: none;
+    opacity: 1;
+   background: url(../../../../images/like-active.png) center no-repeat;
+   padding: 0;
+   background-size: 100%;
+   width: 21px;
+   height: 19px;
+  }
+  .place__like_active:hover, .place__like_active:active, .place__like_active:focus {
+    cursor: pointer;
+    opacity: 1;
+    transition: 0.4s;
+    outline: none;
+}

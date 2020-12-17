@@ -1,0 +1,12 @@
+.popup__close_view{
+    top: -16px;
+    right: 4px;
+}
+@media screen and (max-width: 480px) {
+    .popup__close_view {
+        width: 30px;
+        height: 30px;
+        top: -12px;
+        right: 10px;
+    }
+}

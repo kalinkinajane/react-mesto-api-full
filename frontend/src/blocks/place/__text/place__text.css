@@ -1,0 +1,13 @@
+.place__text {
+    width: calc(100% - 36px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 23px 0 0 21px;
+}
+
+@media screen and (max-width: 425px) {
+    .place__text {
+        min-width: 246px;
+    }
+}

@@ -1,0 +1,19 @@
+.profile__edit-avatar{
+    position: relative;
+   }
+   .profile__edit-avatar:after{
+     content: '';
+     position:absolute;
+     top: 0;
+     left: 0;
+     width: 100% ;
+     height: 100%;
+     background: url(../../../images/button-edit.svg) no-repeat center;
+     background-color: rgba(0, 0, 0, .8);
+     pointer-events: none;
+     display: none;
+   }
+   .profile__edit-avatar:hover:after{
+     display: block;
+     transition: 0.15s;
+   }
