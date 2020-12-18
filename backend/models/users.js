@@ -66,16 +66,16 @@ userSchema.statics.findUserByCredentials = function (email, password) {
 };
 
 // eslint-disable-next-line func-names
-userSchema.pre('save', function (next) {
-  if (!this.isModified('password')) return next();
-  return bcrypt.hash(this.password, 10)
-    .then((hash) => {
-      this.password = hash;
-      next();
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
+// userSchema.pre('save', function (next) {
+//   if (!this.isModified('password')) return next();
+//   return bcrypt.hash(this.password, 10)
+//     .then((hash) => {
+//       this.password = hash;
+//       next();
+//     })
+//     .catch((err) => {
+//       next(err);
+//     });
+// });
 const userModel = mongoose.model('user', userSchema);
 module.exports = userModel;
