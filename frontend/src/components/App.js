@@ -61,6 +61,29 @@ function App() {
         console.error(err);
       })
   }
+   // проверка токена
+   const tokenCheck = () => {
+    const jwt = localStorage.getItem('jwt')
+    if (jwt) {
+      auth.getContent(jwt)
+        .then((res) => {
+          if (res.email) {
+            setUserData({
+              email: res.email
+            })
+            setLoggedIn(true);
+            history.push('/')
+          }
+
+        })
+        .catch(err => {
+          if (err === 401) {
+            console.log('Токен не передан или передан не в том формате')
+          }
+          console.log('Переданный токен некорректен')
+        })
+    }
+  };
   // авторизация
   const onLogin = (password, email) => {
     auth.authorize(password, email)
@@ -92,29 +115,7 @@ function App() {
     })
     setLoggedIn(false);
   }
-  // проверка токена
-  const tokenCheck = () => {
-    const jwt = localStorage.getItem('jwt')
-    if (jwt) {
-      auth.getContent(jwt)
-        .then((res) => {
-          if (res.email) {
-            setUserData({
-              email: res.email
-            })
-            setLoggedIn(true);
-            history.push('/')
-          }
-
-        })
-        .catch(err => {
-          if (err === 401) {
-            console.log('Токен не передан или передан не в том формате')
-          }
-          console.log('Переданный токен некорректен')
-        })
-    }
-  };
+ 
   // Загрузка начальных данных
   React.useEffect(() => {
     api.getAllNeedData().then(([cardData, userData]) => {

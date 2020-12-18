@@ -1,5 +1,5 @@
 import { Promise } from "core-js";
-const BASE_URL = `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:3000'}`
+const BASE_URL = `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:3003'}`
 export class Api {
     constructor({ url}) {
         this._url = url;

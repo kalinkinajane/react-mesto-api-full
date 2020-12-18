@@ -11,7 +11,7 @@ const { requestLogger, errorLogger } = require('./middelewares/logger');
 const app = express();
 const routers = require('./routes/index.js');
 
-const PORT = 3000;
+const PORT = 3003;
 
 const errorHandler = require('./middelewares/errorHandle');
 
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   origin: allowedCors,
 // }));
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3003',
   credentials: true,
 }));
 app.use(requestLogger);
