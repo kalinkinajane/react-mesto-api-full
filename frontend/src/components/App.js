@@ -118,12 +118,14 @@ function App() {
  
   // Загрузка начальных данных
   React.useEffect(() => {
-    api.getAllNeedData().then(([cardData, userData]) => {
+    if (loggedIn) {
+      api.getAllNeedData().then(([cardData, userData]) => {
 
-      setCurrentUser(userData);
-      setCards(cardData)
-    }).catch((err) => console.log(`Ошибка: ${err}`))
-  }, [])
+        setCurrentUser(userData);
+        setCards(cardData)
+      }).catch((err) => console.log(`Ошибка: ${err}`))
+    }
+  }, [loggedIn]);
 
   // Добавление новой карточки
   function handleAddPlaceSubmit(data) {

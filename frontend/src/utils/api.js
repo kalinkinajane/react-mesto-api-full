@@ -3,7 +3,6 @@ const BASE_URL = `${window.location.protocol}${process.env.REACT_APP_API_URL || 
 export class Api {
     constructor({ url}) {
         this._url = url;
-        // this._token = token;
     }
     getItems() {
 return fetch(`${this._url}/cards`, {
