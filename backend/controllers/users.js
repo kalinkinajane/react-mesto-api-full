@@ -10,7 +10,6 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 module.exports.getUsers = (req, res, next) => {
   User.find()
     .then((data) => {
-      console.log(data);
       res.send(data);
     })
     .catch(next);
@@ -19,7 +18,6 @@ module.exports.getUsers = (req, res, next) => {
 module.exports.getUserMe = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
-      console.log(user);
       res.status(200).send(user);
     })
     .catch((err) => {

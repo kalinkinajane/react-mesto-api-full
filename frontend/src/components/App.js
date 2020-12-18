@@ -109,7 +109,7 @@ function App() {
   }
   //выход
   const onSignOut = () => {
-    const jwt = localStorage.removeItem('jwt')
+    localStorage.removeItem('jwt')
     setUserData({
       email: ''
     })
@@ -120,7 +120,6 @@ function App() {
   React.useEffect(() => {
     if (loggedIn) {
       api.getAllNeedData().then(([cardData, userData]) => {
-
         setCurrentUser(userData);
         setCards(cardData)
       }).catch((err) => console.log(`Ошибка: ${err}`))
@@ -154,13 +153,10 @@ function App() {
   }
   // Лайк карточек
   function handleCardLike(card) {
-    console.log(card.likes);
-    console.log(card);
     const isLiked = card.likes.some(i => i === currentUser._id);
     api.toggleLikes(card._id, !isLiked).then((newCard) => {
       const newCards = cards.map((c) => c._id === card._id ? newCard.card : c);
       setCards(newCards);
-      console.log(newCards);
     }).catch((err) => console.log(`Ошибка: ${err}`))
   }
   // Удаление карточки

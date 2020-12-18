@@ -25,22 +25,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const allowedCors = [
   'localhost:3003',
-  'https://kalinkina.students.nomoredomains.rocks' ,
+  'https://kalinkina.students.nomoredomains.rocks',
 ];
 app.use(cors({
   origin: allowedCors,
 }));
-// app.use(cors({
-//   origin: 'http://localhost:3003',
-//   credentials: true,
-// }));
+
 app.use(requestLogger);
 
-// app.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер сейчас упадёт');
-//   }, 0);
-// });
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use('/', routers);
 app.use(errorLogger);
