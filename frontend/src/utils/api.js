@@ -106,7 +106,7 @@ return fetch(`${this._url}/cards`, {
         });
     }
     toggleLikes(id, like) {
-        return fetch(`${this._url}/cards/likes/${id}`, {
+        return fetch(`${this._url}/cards/${id}/likes`, {
             method: like ? 'PUT' : 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

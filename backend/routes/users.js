@@ -5,13 +5,14 @@ const {
 } = require('../controllers/users');
 
 const {
-  checkUpdateUser, checkUpdateAvatar,
+  checkUpdateUser, checkUpdateAvatar, checkUserId,
+
 } = require('../errors/validations');
 
-userRouter.get('/users', getUsers);
+userRouter.get('/', getUsers);
 userRouter.get('/me', getUserMe);
 
-userRouter.get('/:id', getUserId);
+userRouter.get('/:id', checkUserId, getUserId);
 userRouter.patch('/me', checkUpdateUser, updateUser);
 userRouter.patch('/me/avatar', checkUpdateAvatar, updateAvatar);
 

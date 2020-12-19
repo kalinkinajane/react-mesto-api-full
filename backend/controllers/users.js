@@ -36,6 +36,9 @@ module.exports.getUserId = (req, res, next) => {
   const { id } = req.params;
   User.findById(id)
     .then((user) => {
+      if (!user) {
+        next(new NotFoundError('Нет пользователя с таким id'));
+      }
       res.status(200).send(user);
     })
     .catch((err) => {
@@ -93,11 +96,15 @@ module.exports.login = (req, res, next) => {
     });
 };
 module.exports.updateUser = (req, res, next) => {
-  const { name, about, avatar } = req.body;
+  const { name, about } = req.body;
 
-  User.findByIdAndUpdate(req.user._id, { name, about, avatar },
+  User.findByIdAndUpdate(req.user._id, { name, about },
     { new: true, runValidators: true })
     .then((user) => {
+      if (user.name === null || user.about === null) {
+        next(new BadRequestError('Не заполнено одно из полей'));
+        return;
+      }
       res.send(user);
     })
     .catch((err) => {
@@ -117,12 +124,17 @@ module.exports.updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
   User.findByIdAndUpdate(req.user._id, { avatar }, { new: true, runValidators: true })
     .then((user) => {
+      if (user.avatar === null) {
+        next(new BadRequestError('Не заполнено поле'));
+        return;
+      }
+      console.log(req.body);
       res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'CastError') {
+      if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданны невалидные данные'));
-      } else if (err.name === 'ValidationError') {
+      } else if (err.statusCode === '400') {
         next(new BadRequestError('Непреданы данные'));
       } else if (err.statusCode === 404) {
         next(new NotFoundError('Пользователь не найден'));

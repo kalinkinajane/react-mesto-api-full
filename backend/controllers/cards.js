@@ -1,6 +1,7 @@
 const Card = require('../models/cards');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
+const ForbiddenError = require('../errors/ForbiddenError');
 
 module.exports.getCards = (req, res, next) => {
   Card.find()
@@ -12,7 +13,6 @@ module.exports.getCards = (req, res, next) => {
 
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
-  console.log(req.body);
   Card.create({ name, link, owner: req.user._id })
     .then((card) => {
       res.send({ card });
@@ -27,10 +27,13 @@ module.exports.createCard = (req, res, next) => {
 };
 
 module.exports.deleteCard = (req, res, next) => {
-  console.log(req.params.cardId);
   Card.findByIdAndRemove(req.params.cardId)
     .then((card) => {
-      if (req.user._id === card.owner.toString()) {
+      if (card === null) {
+        next(new NotFoundError('Нет карточки с таким id'));
+      } else if (req.user._id !== card.owner.toString()) {
+        next(new ForbiddenError('Невозможно удалить чужую карточку'));
+      } else if (req.user._id === card.owner.toString()) {
         res.send({ card });
       }
     })
@@ -53,7 +56,13 @@ module.exports.likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user._id } },
     { new: true },
   )
-    .then((card) => res.send({ card }))
+    .then((card) => {
+      if (!card) {
+        next(new NotFoundError('Нет карточки с таким id'));
+        return;
+      }
+      res.send({ card });
+    })
     .catch((err) => {
       if (err.kind === 'ObjectId') {
         next(new BadRequestError('Невалидный id'));
@@ -73,7 +82,13 @@ module.exports.dislikeCard = (req, res, next) => {
     { $pull: { likes: req.user._id } },
     { new: true },
   )
-    .then((card) => res.send({ card }))
+    .then((card) => {
+      if (!card) {
+        next(new NotFoundError('Нет карточки с таким id'));
+        return;
+      }
+      res.send({ card });
+    })
     .catch((err) => {
       if (err.kind === 'ObjectId') {
         next(new BadRequestError('Невалидный id'));

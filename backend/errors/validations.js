@@ -1,6 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 
-const checkСreateUser = celebrate({
+const checkCreateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
@@ -28,7 +28,6 @@ const checkUpdateUser = celebrate({
   params: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().uri(),
   }),
 });
 
@@ -37,6 +36,22 @@ const checkUpdateAvatar = celebrate({
     avatar: Joi.string().uri(),
   }),
 });
+const checkUserId = celebrate({
+  params: Joi.object().keys({
+    id: Joi.string().alphanum().length(24),
+  }),
+});
+const checkCardId = celebrate({
+  params: Joi.object().keys({
+    cardId: Joi.string().alphanum().length(24),
+  }),
+});
 module.exports = {
-  checkСreateUser, checkLogin, checkCreateCard, checkUpdateUser, checkUpdateAvatar,
+  checkCreateUser,
+  checkLogin,
+  checkCreateCard,
+  checkUpdateUser,
+  checkUpdateAvatar,
+  checkUserId,
+  checkCardId,
 };

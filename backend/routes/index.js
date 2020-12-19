@@ -4,10 +4,10 @@ const { createUser, login } = require('../controllers/users');
 const users = require('./users.js');
 const cards = require('./cards.js');
 const {
-  checkСreateUser, checkLogin,
+  checkCreateUser, checkLogin,
 } = require('../errors/validations');
 
-router.post('/signup', checkСreateUser, createUser);
+router.post('/signup', checkCreateUser, createUser);
 router.post('/signin', checkLogin, login);
 router.use('/users', auth, users);
 router.use('/cards', auth, cards);
