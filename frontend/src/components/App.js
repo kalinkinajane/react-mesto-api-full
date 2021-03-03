@@ -88,6 +88,7 @@ function App() {
   const onLogin = (password, email) => {
     auth.authorize(password, email)
       .then(data => {
+        console.log(data)
         if (data.token) {
           localStorage.setItem('jwt', data.token);
           setUserData({
