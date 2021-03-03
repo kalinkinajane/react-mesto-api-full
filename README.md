@@ -1,8 +1,8 @@
 # Mesto 
 # публичный IP-адрес сервера :
- https://178.154.247.113
+ https://130.193.48.134
 # домен: 
-https://kalinkina.students.nomoredomains.rocks/
+https://mestokalinkina.students.nomoredomains.rocks
 
 # Описание:
 Сервис Mesto: интерактивная страниця, куда можно добавлять фотографии, удалять их и ставить лайки.
