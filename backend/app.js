@@ -23,13 +23,11 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const allowedCors = [
-  'localhost:3003',
-  'https://mestokalinkina.students.nomoredomains.rocks',
-];
-app.use(cors({
-  origin: allowedCors,
-}));
+// const allowedCors = [
+//   'localhost:3003',
+//   'https://mestokalinkina.students.nomoredomains.rocks',
+// ];
+app.use(cors());
 
 app.use(requestLogger);
 
