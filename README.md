@@ -1,11 +1,11 @@
 # Mesto 
-# публичный IP-адрес сервера :
- https://130.193.48.134
-# домен: 
-https://mestokalinkina.students.nomoredomains.rocks
+#  
 
 # Описание:
 Сервис Mesto: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.
+
+<img width="455" alt="Снимок экрана 2021-07-26 в 11 35 30" src="https://user-images.githubusercontent.com/62453022/126967757-a3ffcca0-2a78-4bf2-a3d9-a8cd38512a26.png">
+
 
 Проектная работа создана на Create React App. При написание использовался JSX. Проект разбит на компоненты: App, Card, ImagePopup, PopupWithForm, Main, Header, Footer. Карточки и информация о пользователе загружается с сервера, добавлены запросы к API.
 
