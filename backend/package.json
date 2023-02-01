@@ -29,7 +29,7 @@
     "express-winston": "^4.0.5",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.14",
+    "mongoose": "^5.13.15",
     "validator": "^13.5.2",
     "winston": "^3.3.3"
   },
